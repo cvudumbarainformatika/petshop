@@ -59,8 +59,8 @@ function handleInput(e) {
     e.target.value = raw // Untuk refleksi langsung di input
     internalValue.value = raw
 
-    const parsed = parseNumber(raw)
-    emit('update:modelValue', isNaN(parsed) ? null : parsed)
+    // const parsed = parseNumber(raw)
+    // emit('update:modelValue', isNaN(parsed) ? null : parsed)
 
   
   } else {
@@ -78,7 +78,10 @@ function handleBlur() {
   emit('blur')
   isFocussed.value = false
   if (props.type === 'number') {
-    internalValue.value = formatNumber(props.modelValue)
+    const parsed = parseNumber(internalValue.value)
+    emit('update:modelValue', isNaN(parsed) ? null : parsed)
+
+    internalValue.value = formatNumber(parsed)
   }
 }
 
