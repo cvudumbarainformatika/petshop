@@ -2,9 +2,9 @@
 
 
 const colors = {
-  primary: '#002D30',
-  lightPrimary: '#017A7A',
-  secondary: '#e1efedff',
+  primary: '#060b31ff',
+  lightPrimary: '#2876a3ff',
+  secondary: '#cee1ed',
   background: '#F2F2F2',
   dark: '#181818',
   danger: '#E9053E',

@@ -7,9 +7,9 @@
 
 @theme {
   --font-poppins: "Poppins", sans-serif;
-  --color-primary: #002D30;
-  --color-light-primary: #017A7A;
-  --color-secondary: #e1efedff;
+  --color-primary: #2F1A87;
+  --color-light-primary: #2876a3ff;
+  --color-secondary: #cee1ed;
   --color-background: #F2F2F2;
   --color-dark: #181818;
   --color-danger: #E9053E;
@@ -25,7 +25,7 @@ body {
 
 @layer utilities {
   .bg-gradient-primary {
-    background-color: linear-gradient(to right, #002D30, #017A7A);
+    background-color: linear-gradient(to right, #2F1A87, #2876a3ff);
   }
 }
 
@@ -38,11 +38,11 @@ body {
   }
   @keyframes pulseGlow {
     0%, 100% {
-      filter: drop-shadow(0 0 0px #017A7A);
+      filter: drop-shadow(0 0 0px #2876a3ff);
       transform: scale(1);
     }
     50% {
-      filter: drop-shadow(0 0 6px #017A7A);
+      filter: drop-shadow(0 0 6px #2876a3ff);
       transform: scale(1.1);
     }
   }
@@ -97,9 +97,9 @@ body {
 
 :root {
   --font-poppins: "Poppins", sans-serif;
-  --color-primary: #002D30;
-  --color-light-primary: #017A7A;
-  --color-secondary: #e1efedff;
+  --color-primary: #1a3587;
+  --color-light-primary: #2876a3ff;
+  --color-secondary: #cee1ed;
   --color-background: #F2F2F2;
   --color-dark: #181818;
   --color-danger: #E9053E;
