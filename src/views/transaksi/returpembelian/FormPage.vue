@@ -389,6 +389,7 @@ const handleRetur = (e) => {
   // .then(() => {
   //   clearSelectedBarang()
   // })
+  console.log('e', e);
   for (const key in form.value) {
     if (key in e) {
       form.value[key] = e[key]
@@ -402,7 +403,7 @@ const handleRetur = (e) => {
   form.value.nofaktur = props.store.penerimaanSelected?.nofaktur ?? null
   form.value.jumlahretur_b = e.jumlah ?? null
 
-  // console.log('form', form.value);
+  console.log('form', form.value);
   // console.log('handleRetur', e);
   // console.log('store', props.store.penerimaanSelected);
 

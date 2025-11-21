@@ -1,6 +1,7 @@
 <template>
   <base-master :title="title" :store="store" :showPrint="true" :showOpnameButton="true" :showMonthButton="true"
-    :showAddButton="false" :onRange="handleRange" :onRefresh="handleRefresh" :onTriger="handleOpname">
+    :showPrintButton="true" :showAddButton="false" :onRange="handleRange" :onRefresh="handleRefresh"
+    :onTriger="handleOpname">
     <!-- <template #loading>
       <LoaderItem />
     </template> -->
@@ -48,20 +49,22 @@ const store = useKartuStokStore()
 const route = useRoute()
 const title = computed(() => route.meta.title)
 const dateRange = ref({})
-const app = useAppStore()
 
+const app = useAppStore()
+const company = computed(() => {
+  console.log('app', app?.form)
+  return app?.form
+})
 onMounted(async () => {
   store.per_page = 100
-  app.fetchData()
-  console.log('company', company.value)
-  Promise.all([
-    handleRange(),
-    getCurrentDate()
-  ])
+  await app.fetchData()
+  // Promise.all([
+  getCurrentDate()
+  await handleRange()
+ 
+  // ])
 })
-const company = computed(() => {
-  return app?.item || null
-})
+
 // function toLocalDateString(date) {
 //   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
 // }

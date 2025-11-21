@@ -289,7 +289,7 @@ const form = ref({
   pajak: '',
   flag: null,
   hutang: '',
-
+  diskon_heder: 0,
   // rincian (object key by kode_barang)
   kode_barang: '',
   nobatch: '',
@@ -486,6 +486,7 @@ function initForm() {
     satuan_b: '',
     pajak_rupiah: '',
     diskon_rupiah: '',
+    diskon_heder: 0,
     rincian: {},
   }
   // ambilOrder()
@@ -587,6 +588,7 @@ const handleSubmit = async (e, item) => {
   const rincianItem = form.value.rincian[kode_barang] || {}
   console.log('Handling submit for kode_barang:', item)
   // sync beberapa field ke form utama (mirip logic sebelumnya)
+  form.value.diskon_heder = parseFloat(form.value.diskon_heder || 0)
   form.value.kode_barang = kode_barang
   form.value.nobatch = rincianItem.nobatch || ''
   form.value.jumlah_b = rincianItem.jumlah_b || 0

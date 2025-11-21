@@ -27,14 +27,14 @@
                 <div class="font-bold">{{ item?.isi }}</div>
               </u-row>
               <u-row flex1 class="w-full text-xs">
-                <div>Harga Rsp : </div>
+                <div>Harga Member : </div>
                 <div class="font-bold">{{ formatRupiah(item?.harga_jual_resep) }}</div>
                 <div>|| Harga Umum : </div>
                 <div class="font-bold">{{ formatRupiah(item?.harga_jual_umum) }}</div>
-                <div>|| Harga Customer : </div>
+                <!-- <div>|| Harga Customer : </div>
                 <div class="font-bold">{{ formatRupiah(item?.harga_jual_cust) }}</div>
                 <div>|| Harga Premium : </div>
-                <div class="font-bold">{{ formatRupiah(item?.harga_jual_prem) }}</div>
+                <div class="font-bold">{{ formatRupiah(item?.harga_jual_prem) }}</div> -->
               </u-row>
 
             </div>

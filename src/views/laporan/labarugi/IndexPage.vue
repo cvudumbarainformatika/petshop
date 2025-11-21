@@ -123,7 +123,7 @@
               </td>
             </tr>
             <tr v-for="(it, idx) in store.items?.rincianbeban" :key="idx">
-              <td class="px-4 py-2 pl-8">- {{ it?.nama_beban }}</td>
+              <td class="px-4 py-2 pl-8">- {{ it?.nama }}</td>
               <td class="px-4 py-2 text-right">
                 Rp. {{ formatRupiah(it?.subtotal) || 0 }}
               </td>
