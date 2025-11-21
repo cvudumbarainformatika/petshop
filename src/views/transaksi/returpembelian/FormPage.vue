@@ -396,7 +396,8 @@ const handleRetur = (e) => {
     }
   }
 
-  form.value.id_penerimaan_rinci = e?.id ?? null
+  form.value.kode_barang = e?.kode_barang ?? null
+  form.value.id_penerimaan_rinci = 0
   form.value.jenispajak = props.store.penerimaanSelected?.jenispajak ?? null
   form.value.pajak = props.store.penerimaanSelected?.pajak ?? null
   form.value.kode_supplier = props.store.penerimaanSelected?.kode_suplier ?? null

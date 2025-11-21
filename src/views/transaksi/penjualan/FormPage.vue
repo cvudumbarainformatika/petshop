@@ -210,18 +210,19 @@
               </div>
               <u-row flex1 class="col-span-12 w-full -mt-4" gap="gap-2">
                 <u-grid cols="12">
-                  <u-row class="col-span-3">
+                  <u-row class="col-span-6">
                     <u-input ref="inpJumlahRef" v-model="form.jumlah_k" label="jumlah" type="number"
                       :error="isError('jumlah_k')" :error-message="errorMessage('jumlah_k')" @keydown.enter.stop="()=> {
-                          inpDiscRef?.focus()
+                          // inpDiscRef?.focus(),
+                          handleAdd(store.barangSelected)
                         }" />
                   </u-row>
-                  <u-row class="col-span-3">
+                  <!-- <u-row class="col-span-3">
                     <u-input ref="inpDiscRef" v-model="form.diskon" label="discount Rp" type="number"
                       :error="isError('diskon')" :error-message="errorMessage('diskon')" @keydown.enter.stop="()=> {
                           handleAdd(store.barangSelected)
                         }" />
-                  </u-row>
+                  </u-row> -->
                   <u-row flex1 right class="col-span-6 w-full mt-2" gap="gap-2">
                     <u-btn-icon icon="add" variant="secondary" tooltip="Simpan Rincian"
                       @click="handleAdd(store.barangSelected)" />
@@ -557,7 +558,7 @@ const handleAdd = async(item) => {
   form.value.hpp = parseFloat(item?.harga_beli ?? selected.harga_beli ?? 0)
 
   props.store.create(form.value)
-
+  form.value.jumlah_k = 1
   handleOk()
   
 }
