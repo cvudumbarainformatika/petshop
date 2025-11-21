@@ -48,9 +48,9 @@
           <div class="flex items-center gap-4">
             <img src="/images/logo.svg" alt="logo" class="w-14 h-14 object-contain" />
             <div>
-              <div class="text-xl font-semibold tracking-wide">{{ app?.form?.nama || 'Nama Apotik nya' }}</div>
+              <div class="text-xl font-semibold tracking-wide">{{ app?.form?.nama || 'Nama Toko nya' }}</div>
               <p class="text-sm text-gray-600">
-                {{ app?.form?.alamat || 'Alamat Apotik nya' }}<br />
+                {{ app?.form?.alamat || 'Alamat Toko nya' }}<br />
                 Telp: {{ app?.form?.telepon || '08123456789' }}
               </p>
             </div>

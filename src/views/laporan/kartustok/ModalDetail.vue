@@ -6,11 +6,11 @@
           <div class="flex items-center gap-4">
             <img src="/images/logo.svg" alt="logo" class="w-14 h-14 object-contain" />
             <div>
-              <div class="text-xl font-semibold tracking-wide">{{ company?.nama || 'Nama Apotik nya' }}</div>
+              <div class="text-xl font-semibold tracking-wide">{{ company?.nama || 'Nama Toko nya' }}</div>
               <p class="text-sm text-gray-600">
                 {{ company?.alamat }}<br />
                 • Telp: {{ formatTeleponID(company?.telepon) }}
-                <!-- • Email: {{ company?.email || 'email Apotik nya' }} -->
+                <!-- • Email: {{ company?.email || 'email Toko nya' }} -->
               </p>
             </div>
           </div>

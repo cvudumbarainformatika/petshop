@@ -20,7 +20,7 @@
           SELAMAT
           DATANG</div>
         <div class="mt-0 text-background text-lg animate-fade-in" style="letter-spacing: 0.05em">di Sistem
-          Informasi Apotek</div>
+          Informasi Petshop</div>
         <div class=" -mb-2 mt-3 text-background text-xs font-thin animate-fade-in delay-200"
           style="letter-spacing: 0.2em">Harap Login untuk Melanjutkan</div>
         <div class="flex flex-col gap-4 my-4 w-full px-12 transition animate-fade-in delay-200">

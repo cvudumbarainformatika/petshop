@@ -11,7 +11,7 @@
           <div class="flex items-center gap-4">
             <img src="/images/logo.svg" alt="logo" class="w-14 h-14 object-contain" />
             <div>
-              <div class="text-xl font-semibold tracking-wide">{{ company?.nama || 'Nama Apotik nya' }}</div>
+              <div class="text-xl font-semibold tracking-wide">{{ company?.nama || 'Nama Toko nya' }}</div>
               <p class="text-sm text-gray-600">
                 {{ company?.alamat }}<br />
                 • Telp: {{ formatTeleponID(company?.telepon) }}
@@ -48,7 +48,7 @@
           </div>
           <div class="p-4 rounded-xl bg-gray-50">
             <div class="text-gray-500 text-xs uppercase">Gudang / Penerima</div>
-            <div class="mt-1 font-medium">{{ 'Nama Apotiknya' }}</div>
+            <div class="mt-1 font-medium">{{ 'Nama Tokonya' }}</div>
             <div class="text-gray-700 leading-snug">
               <div>Petugas: {{ data?.kode_user || '-' }}</div>
             </div>

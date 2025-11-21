@@ -165,7 +165,7 @@ const stats = computed(() => {
 
           <u-card padding="p-0" class="col-span-1 md:col-span-6 w-full">
             <u-row class="px-4 pt-4">
-              <u-text size="md" class="font-light" color="text-gray-500">Top 5 Fast Move Product (Obat) Bulan
+              <u-text size="md" class="font-light" color="text-gray-500">Top 5 Fast Move Product Bulan
                 Ini</u-text>
             </u-row>
 

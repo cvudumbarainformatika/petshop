@@ -4,9 +4,9 @@
             <div class="flex items-center gap-4">
                 <img src="/images/logo.svg" alt="logo" class="w-14 h-14 object-contain" />
                 <div>
-                    <div class="text-xl font-semibold tracking-wide">{{ company?.nama || 'Nama Apotik nya' }}</div>
+                    <div class="text-xl font-semibold tracking-wide">{{ company?.nama || 'Nama Toko nya' }}</div>
                     <p class="text-sm text-gray-600">
-                        {{ company?.alamat || 'Alamat Apotik nya' }}<br />
+                        {{ company?.alamat || 'Alamat Toko nya' }}<br />
                         • Telp: {{ formatTeleponID(company?.telepon) }}
                     </p>
                 </div>
@@ -15,14 +15,14 @@
                 <div class="pt-2 uppercase text-md font-bold text-right">
                     REKAP KARTU STOK
                 </div>
-                <div class="pt-1 text-sm text-right">Berdasarkan Data Obat</div>
+                <div class="pt-1 text-sm text-right">Berdasarkan Data Barang</div>
                 <div class="pt-1 text-sm text-right">Periode {{ periode }} </div>
             </div>
         </div>
         <table flex1 class="w-full text-sm border-separate [border-spacing:0]">
             <thead>
                 <tr>
-                    <td class="td text-left p-1 font-bold">Nama Obat</td>
+                    <td class="td text-left p-1 font-bold">Nama Barang</td>
                     <td class="td text-left p-1 font-bold">Saldo Awal</td>
                     <td class="td text-left p-1 font-bold">Stok Masuk</td>
                     <td class="td text-left p-1 font-bold">Stok Keluar</td>

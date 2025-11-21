@@ -15,7 +15,7 @@
               <p class="text-sm text-gray-600">
                 {{ company?.alamat }}<br />
                 • Telp: {{ formatTeleponID(company?.telepon) }}
-                <!-- • Email: {{ company?.email || 'email Apotik nya' }} -->
+                <!-- • Email: {{ company?.email || 'email Toko nya' }} -->
               </p>
             </div>
           </div>

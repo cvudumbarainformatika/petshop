@@ -132,7 +132,7 @@
                           item.satuan_k || '-' }}</u-text>
                       </div>
                       <div class="col-span-3 text-right">
-                        <u-text class="font-bold">Kode Obat</u-text>
+                        <u-text class="font-bold">Kode Barang</u-text>
                         <u-text size="sm" class="font-medium">{{ item.kode_barang || '-' }}</u-text>
                       </div>
                       <div class="col-span-12">
