@@ -94,26 +94,26 @@
       <u-card class="col-span-4 h-full space-y-2">
         <u-row>
           <u-icon name="users" class="w-4 h-4" />
-          <u-text class="font-bold">Data Distributor</u-text>
+          <u-text class="font-bold">Data Pelanggan</u-text>
         </u-row>
         <u-row>
-          <u-autocomplete ref="searchDokterRef" v-model="searchDokter" placeholder="Cari Distributor" :debounce="300"
-            :min-search-length="2" item-key="id" item-label="nama" not-found-text="Data Distributor tidak ditemukan"
+          <u-autocomplete ref="searchDokterRef" v-model="searchDokter" placeholder="Cari Pelanggan" :debounce="300"
+            :min-search-length="2" item-key="id" item-label="nama" not-found-text="Data Pelanggan tidak ditemukan"
             not-found-subtext="Coba kata kunci lain" :show-add-button="false"
             api-url="/api/v1/master/pelanggan/get-list" api-response-path="data.data" :api-params="{ per_page: 5 }"
-            :use-api="true" @select="handleSelectedDokter"></u-autocomplete>
+            :use-api="true" @select="handleSelectedPelanggan"></u-autocomplete>
         </u-row>
         <u-row>
-          <div v-if="store?.dokterSelected"
+          <div v-if="store?.pelangganSelected"
             class="bg-primary/10 border border-primary rounded-xl shadow-sm p-4 transition-all duration-300 hover:shadow-md w-full">
             <div class="flex flex-1 justify-between items-start">
               <u-row flex1 class="w-full">
                 <u-icon name="UserSearch" class="w-5 h-5 text-primary" />
                 <u-text>
-                  {{ store.dokterSelected?.nama }}
+                  {{ store.pelangganSelected?.nama }}
                 </u-text>
               </u-row>
-              <button @click="clearSelectedDokter" class="text-primary hover:text-danger " aria-label="Hapus">
+              <button @click="clearSelectedPelanggan" class="text-primary hover:text-danger " aria-label="Hapus">
                 <u-icon name="X" class="w-4 h-4" />
               </button>
             </div>
@@ -126,7 +126,7 @@
               <u-icon name="UserSearch" class="w-4 h-4 text-primary" />
               <div>
                 <u-text>
-                  Silahkan cari data dokter
+                  Silahkan cari data Pelanggan
                 </u-text>
               </div>
             </u-row>
@@ -361,7 +361,7 @@ const loadingLock = ref(false)
 const modalNota = ref(false)
 
 const jenis = computed(() => {
-  return (form?.value?.kode_dokter !== null && form?.value?.kode_dokter !== '') ? 'distribusi' : 'umum'
+  return (form?.value?.kode_pelanggan !== null && form?.value?.kode_pelanggan !== '') ? 'pelanggan' : 'umum'
 })
 
 
@@ -423,6 +423,7 @@ watch(() => ({ ...props.store.form }), (newForm, oldForm) => {
   }
 
   if (newForm) {
+    console.log('🔥 watch form triggered', newForm);
     for (const key in newForm) {
       if (key in form.value) {
         form.value[key] = newForm[key]
@@ -437,10 +438,10 @@ watch(() => ({ ...props.store.form }), (newForm, oldForm) => {
     formBayar.value.diskon = newForm?.diskon || 0
     formBayar.value.jumlah_bayar = newForm?.jumlah_bayar || 0
     formBayar.value.cara_bayar = newForm?.cara_bayar || 'TUNAI'
-
+    props.store.pelangganSelected = newForm?.pelanggan ?? null
     // console.log('🔥 watch form', form.value, newForm);
 
-
+    
   }
 
 }, { deep: true })
@@ -535,7 +536,7 @@ const handleOk = () => {
 const lihatHargaBy = (item) => {
   const hargaumum = item?.harga_jual_umum || 0
   const hargaecer = item?.harga_jual_resep || 0
-  return form.value.kode_dokter ? formatRupiah(hargaecer) : formatRupiah(hargaumum)
+  return form.value.kode_pelanggan ? formatRupiah(hargaecer) : formatRupiah(hargaumum)
 }
 const handleAdd = async(item) => {
   // console.log('handleAdd', item);
@@ -565,7 +566,7 @@ const handleAdd = async(item) => {
 
 function getHargaJual() {
   const selected = props?.store?.barangSelected ?? null
-  return form.value.kode_dokter ? parseInt(selected?.harga_jual_resep ?? 0) : parseInt(selected?.harga_jual_umum ?? 0)
+  return form.value.kode_pelanggan ? parseInt(selected?.harga_jual_resep ?? 0) : parseInt(selected?.harga_jual_umum ?? 0)
 }
 
 const handleSelectedPelanggan = (item) => {
@@ -578,11 +579,9 @@ const handleSelectedPelanggan = (item) => {
   
 }
 const handleSelectedDokter = (item) => {
-  console.log('dokter', item);
-  
-  
+ 
   props.store.dokterSelected = item
-  form.value.kode_dokter = item?.kode ?? null
+  form.value.kode_pelanggan = item?.kode ?? null
   searchDokter.value = ''
   
 }
@@ -636,7 +635,7 @@ const clearSelectedPelanggan = () => {
 }
 const clearSelectedDokter = () => {
   props.store.dokterSelected = null
-  form.value.kode_dokter = ''
+  form.value.kode_pelanggan = ''
 }
 const clearSelectedBarang = () => {
   props.store.barangSelected = null

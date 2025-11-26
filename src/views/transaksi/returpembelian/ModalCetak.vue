@@ -82,8 +82,8 @@
                 <td class="td">{{ it?.kode_barang || '-' }}</td>
                 <td class="td">
                   <div class="font-medium">{{ it?.barang?.nama || '-' }}</div>
-                  <div class="text-gray-500">Batch: {{ it?.nobatch || '-' }} • Exp: {{ it.tgl_exprd ?
-                    formatDateIndo(it.tgl_exprd) : '-' }}</div>
+                  <!-- <div class="text-gray-500">Batch: {{ it?.nobatch || '-' }} • Exp: {{ it.tgl_exprd ?
+                    formatDateIndo(it.tgl_exprd) : '-' }}</div> -->
                 </td>
                 <td class="td text-right">{{ it?.jumlahretur_b || '-' }}</td>
                 <td class="td text-right">{{ formatRupiah(it?.harga_b) || '-' }}</td>

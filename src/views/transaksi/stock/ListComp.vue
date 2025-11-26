@@ -112,7 +112,7 @@
                 <u-row class="col-span-5">
                   <u-grid cols="4">
                     <u-row class="col-span-2">
-                      <span class="font-medium">Harga Distributor</span>
+                      <span class="font-medium">Harga Member</span>
                     </u-row>
                     <u-row class="col-span-2">
                       <span>: {{ item?.barang?.harga_jual_resep }}</span>
@@ -120,7 +120,7 @@
                   </u-grid>
                   <u-grid cols="4">
                     <u-row class="col-span-2">
-                      <span class="font-medium">Harga Eceran</span>
+                      <span class="font-medium">Harga Umum</span>
                     </u-row>
                     <u-row class="col-span-2">
                       <span>: {{ item?.barang?.harga_jual_umum }}</span>

@@ -21,32 +21,33 @@
         <table flex1 class="w-full text-sm border-separate [border-spacing:0]">
             <thead>
                 <tr>
-                    <td class="td text-left p-1 font-bold">Nomor Penerimaan</td>
+                    <td class="td text-left p-1 font-bold">No</td>
                     <td class="td text-left p-1 font-bold">Nama Barang</td>
-                    <td class="td text-left p-1 font-bold">Nobatch</td>
+                    <!-- <td class="td text-left p-1 font-bold">Nobatch</td> -->
                     <td class="td text-left p-1 font-bold">Satuan</td>
-                    <td class="td text-right p-1 font-bold">Harga Resep</td>
-                    <td class="td text-right p-1 font-bold">Harga Biasa</td>
-                    <td class="td text-left p-1 font-bold">Tgl Expired</td>
+                    <td class="td text-right p-1 font-bold">Harga Member</td>
+                    <td class="td text-right p-1 font-bold">Harga Umum</td>
+                    <!-- <td class="td text-left p-1 font-bold">Tgl Expired</td> -->
                     <td class="td text-right p-1 font-bold">Stok</td>
                 </tr>
             </thead>
             <tbody>
                 <template v-for="(it, index) in store.items" :key="index">
                     <tr>
-                        <td class="td p-1 align-top text-left">{{ it?.nopenerimaan }}</td>
+                        <!-- <td class="td p-1 align-top text-left">{{ it?.nopenerimaan }}</td> -->
+                        <td class="td p-1 align-top text-left"> {{ index+1 }} </td>
                         <td class="td p-1 align-top text-left font-semibold">({{ it?.barang?.kode }}) - {{
                             it?.barang?.nama }}</td>
-                        <td class="td p-1 align-top text-left">{{ it?.nobatch || '-' }}</td>
+                        <!-- <td class="td p-1 align-top text-left">{{ it?.nobatch || '-' }}</td> -->
                         <td class="td p-1 align-top text-left">1 {{ it?.satuan_b }} isi {{ it?.isi }} {{ it?.satuan_k }}
                         </td>
                         <td class="td p-1 align-top text-right"> {{
-                            formatRpkoma(it?.barang?.harga_jual_resep_k) }}
+                            formatRpkoma(it?.barang?.harga_jual_resep) }}
                         </td>
                         <td class="td p-1 align-top text-right"> {{
-                            formatRpkoma(it?.barang?.harga_jual_biasa_k) }}
+                            formatRpkoma(it?.barang?.harga_jual_umum) }}
                         </td>
-                        <td class="td p-1 align-top text-left"> {{ formatDateIndo(it?.tgl_exprd) }} </td>
+                        <!-- <td class="td p-1 align-top text-left"> {{ formatDateIndo(it?.tgl_exprd) }} </td> -->
                         <td class="td p-1 align-top text-right font-semibold"> {{ formatRupiah(it?.jumlah_k) }} {{
                             it?.satuan_k }} </td>
                     </tr>

@@ -141,32 +141,32 @@
                     </u-grid>
                   </u-row>
                   <u-row>
-                    <u-grid cols="12">
-                      <u-row class="col-span-4">
+                    <u-grid cols="10">
+                      <u-row class="col-span-5">
                         <u-input v-model="form.rincian[item.kode_barang].jumlah_b" label="Penerimaan (Besar)"
                           :error="isError(`rincian.${item.kode_barang}.jumlah_b`)"
                           :error-message="errorMessage(`rincian.${item.kode_barang}.jumlah_b`)" type="number" />
                       </u-row>
-                      <u-row class="col-span-4">
+                      <u-row class="col-span-5">
                         <u-input v-model="form.rincian[item.kode_barang].harga_b" label="Harga"
                           :error="isError(`rincian.${item.kode_barang}.harga_b`)"
                           :error-message="errorMessage(`rincian.${item.kode_barang}.harga_b`)" type="number" />
                       </u-row>
-                      <u-row class="col-span-4">
+                      <!-- <u-row class="col-span-4">
                         <u-input v-model="form.rincian[item.kode_barang].nobatch" label="Nobatch"
                           :error="isError(`rincian.${item.kode_barang}.nobatch`)"
                           :error-message="errorMessage(`rincian.${item.kode_barang}.nobatch`)" />
-                      </u-row>
+                      </u-row> -->
                     </u-grid>
                   </u-row>
                   <u-row>
-                    <u-grid cols="12">
-                      <u-row class="col-span-4">
+                    <u-grid cols="10">
+                      <u-row class="col-span-5">
                         <u-input v-model="form.rincian[item.kode_barang].diskon_persen" label="Disc(%)"
                           :error="isError(`rincian.${item.kode_barang}.diskon_persen`)" type="number"
                           :error-message="errorMessage(`rincian.${item.kode_barang}.diskon_persen`)" />
                       </u-row>
-                      <u-row class="col-span-8">
+                      <u-row class="col-span-5">
                         <div
                           class="bg-background border border-light-primary rounded-full shadow-sm p-2.5 transition-all duration-300 hover:shadow-md w-full">
                           <u-row class="items-start" padding="p-0">
@@ -174,9 +174,9 @@
                             <div>
                               <u-text>
                                 Diskon Rp. {{ formatRupiah(
-                                  ((Number(form.rincian[item.kode_barang]?.harga_b ?? 0) *
-                                    Number(form.rincian[item.kode_barang]?.jumlah_b ?? 0)) *
-                                    (Number(form.rincian[item.kode_barang]?.diskon_persen ?? 0) / 100))
+                                ((Number(form.rincian[item.kode_barang]?.harga_b ?? 0) *
+                                Number(form.rincian[item.kode_barang]?.jumlah_b ?? 0)) *
+                                (Number(form.rincian[item.kode_barang]?.diskon_persen ?? 0) / 100))
                                 ) }}
                                 <!-- {{ nilaiDiskon }} -->
                               </u-text>
@@ -186,14 +186,23 @@
                       </u-row>
                     </u-grid>
                   </u-row>
-                  <u-row>
-                    <u-grid cols="12">
-                      <u-row class="col-span-4">
+                  <!-- <u-row>
+                    <u-grid cols="10">
+                      <u-row class="col-span-5 gap-2 mb-2" role="radiogroup" aria-label="Cara Bayar">
+                        <div class="">Ada Tanggal Exprd ? </div>
+                        <u-radio class="bg-background" v-model="form.rincian[item.kode_barang].adaexp" value="ada" label="Ada" />
+                        <u-radio class="bg-background" v-model="form.rincian[item.kode_barang].adaexp" value="tidak" label="Tidak" />
+                      </u-row>
+                      <u-row class="col-span-5" v-if="form.adaexp === 'ada'">
                         <u-input-date label="Expired" type="date" v-model="form.rincian[item.kode_barang].tgl_exprd"
                           :error="errorMessage(`rincian.${item.kode_barang}.tgl_exprd`)" />
                       </u-row>
-                      <u-row class="col-span-8">
-                        <template v-if="!isSameRincian(item.nobatch, item.kode_barang)">
+                    </u-grid>
+                  </u-row> -->
+                  <u-row>
+                    <u-grid cols="10">
+                      <u-row class="col-span-5">
+                        <template v-if="!isSameRincian(item.kode_barang)">
                           <u-btn variant="secondary" label="Batal" @click="handleBatal(item.kode_barang)" />
                           <u-btn :loading="item.loading" label="Simpan" @click.stop="handleSubmit($event, item)" />
                         </template>
@@ -292,7 +301,7 @@ const form = ref({
   diskon_heder: 0,
   // rincian (object key by kode_barang)
   kode_barang: '',
-  nobatch: '',
+  nobatch: 0,
   jumlah_b: '',
   jumlah_k: '',
   harga_b: '',
@@ -303,7 +312,7 @@ const form = ref({
   pajak_rupiah: '',
   diskon_rupiah: '',
   tgl_exprd: '',
-
+  adaexp: '',
   rincian: {},
 })
 
@@ -402,7 +411,7 @@ const listItems = computed(() => {
         jumlah_pesan: parseInt(item.jumlah_b || item?.jumlah_pesan, 0),
         jumlah_b: item.jumlah_b || item.jumlah_pesan || 0,
         harga_b: parseFloat(item.harga_b || 0),
-        nobatch: item.nobatch || '',
+        nobatch: item.nobatch || 0,
         diskon_persen: parseFloat(item.diskon_persen || 0),
         tgl_exprd: item.tgl_exprd || new Date().toISOString().split('T')[0],
         satuan_b: item.satuan_b || item.barang?.satuan_b || '',
@@ -476,7 +485,7 @@ function initForm() {
     pajak: '',
     flag: null,
     kode_barang: '',
-    nobatch: '',
+    nobatch: 0,
     jumlah_b: '',
     jumlah_k: '',
     harga_b: '',
@@ -505,7 +514,7 @@ const initializeRincian = (orderRecords) => {
       jumlah_pesan: jumlahPesan,
       jumlah_b: jumlah_b_default,
       harga_b: parseFloat(item.harga_b || 0),
-      nobatch: item.nobatch || '',
+      nobatch: item.nobatch || 0,
       diskon_persen: parseFloat(item.diskon_persen || 0),
       satuan_b: item.satuan_b || item.master?.satuan_b || '',
       satuan_k: item.satuan_k || item.master?.satuan_k || '',
@@ -590,7 +599,7 @@ const handleSubmit = async (e, item) => {
   // sync beberapa field ke form utama (mirip logic sebelumnya)
   form.value.diskon_heder = parseFloat(form.value.diskon_heder || 0)
   form.value.kode_barang = kode_barang
-  form.value.nobatch = rincianItem.nobatch || ''
+  form.value.nobatch = rincianItem.nobatch || 0
   form.value.jumlah_b = rincianItem.jumlah_b || 0
   form.value.jumlah_k = parseInt(rincianItem.jumlah_b, 0) * parseInt(item.isi || item.master?.isi)
   form.value.harga_b = rincianItem.harga_b || 0
@@ -611,7 +620,7 @@ const handleSubmit = async (e, item) => {
     jumlah_pesan: item.jumlah_pesan || form.value.rincian[kode_barang]?.jumlah_pesan || '',
     jumlah_b: parseInt(rincianItem.jumlah_b || 0),
     harga_b: rincianItem.harga_b || 0,
-    nobatch: rincianItem.nobatch || '',
+    nobatch: rincianItem.nobatch || 0,
     diskon_persen: parseFloat(rincianItem.diskon_persen || 0),
     satuan_b: item.satuan_b || item.master?.satuan_b || '',
     satuan_k: item.satuan_k || item.master?.satuan_k || '',
@@ -662,7 +671,7 @@ const handleBatal = (kode_barang) => {
       jumlah_pesan: form.value.rincian[kode_barang].jumlah_pesan || '',
       jumlah_b: form.value.rincian[kode_barang].jumlah_pesan || '',
       harga_b: '',
-      nobatch: '',
+      nobatch: 0,
       diskon_persen: 0,
       satuan_b: form.value.rincian[kode_barang].satuan_b || '',
       satuan_k: form.value.rincian[kode_barang].satuan_k || '',
@@ -679,24 +688,22 @@ const handleBatal = (kode_barang) => {
 }
 
 
-const isSameRincian = (nobatch, kode_barang) => {
+const isSameRincian = (kode_barang) => {
   const local = form.value.rincian?.[kode_barang]
   const remoteArr = rincianAsArray(props.store.form?.rincian)
-  const remote = remoteArr.find(r => r.kode_barang === kode_barang && r.nobatch === nobatch)
+  const remote = remoteArr.find(r => r.kode_barang === kode_barang)
 
   if (!local || !remote) return false
 
   // 🚀 Jika nilai dihapus (harga, batch, diskon, dll kosong), langsung anggap beda
   if (
-    local.harga_b == null ||
-    local.nobatch == null 
+    local.harga_b == null
   ) {
     return false
   }
 
   return (
     Number(local.jumlah_b) === Number(remote.jumlah_b) &&
-    String(local.nobatch || '') === String(remote.nobatch || '') &&
     Number(local.harga_b) === Number(remote.harga_b) &&
     Number(local.diskon_persen) === Number(remote.diskon_persen) &&
     String(local.tgl_exprd || '') === String(remote.tgl_exprd || '')
@@ -791,7 +798,7 @@ watch(
           jumlah_pesan: savedItem?.jumlah_pesan || orderItem?.jumlah_pesan || null,
           jumlah_b: savedItem?.jumlah_b || orderItem.jumlah_pesan,
           harga_b: savedItem?.harga_b || null,
-          nobatch: savedItem?.nobatch || null,
+          nobatch: savedItem?.nobatch || 0,
           diskon_persen: parseFloat(savedItem?.diskon_persen || 0),
           satuan_b: savedItem?.satuan_b || orderItem?.satuan_b || null,
           satuan_k: savedItem?.satuan_k || orderItem?.satuan_k || null,

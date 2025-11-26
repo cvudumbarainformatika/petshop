@@ -33,8 +33,8 @@
           Umum
         </label>
         <label
-          :class="['text-sm w-full font-medium text-center px-2 py-2 select-none transition-colors', jenis === 'distribusi' ? 'bg-grady-primary text-background ' : 'bg-secondary text-primary font-semibold shadow']">
-          Distribusi
+          :class="['text-sm w-full font-medium text-center px-2 py-2 select-none transition-colors', jenis === 'pelanggan' ? 'bg-grady-primary text-background ' : 'bg-secondary text-primary font-semibold shadow']">
+          Member
         </label>
         </u-grid>
       </div>

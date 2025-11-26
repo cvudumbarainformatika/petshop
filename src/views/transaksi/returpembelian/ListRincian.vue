@@ -3,8 +3,7 @@
     <u-grid cols="4">
       <u-col class="col-span-3" gap="gap-0">
         <u-text class="font-bold">{{ item?.barang?.nama || '-' }}</u-text>
-        <u-text size="xs" color="text-gray-500">{{ item?.barang?.kode || '-' }} | Exp : {{ item?.tgl_exprd || '-' }}</u-text>
-         <u-text size="xs" color="text-gray-500">No Batch : {{ item?.nobatch || '-' }}</u-text>
+        <u-text size="xs" color="text-gray-500">{{ item?.barang?.kode || '-' }}</u-text>
       </u-col>
       <u-col align="items-end" class="col-span-1" gap="gap-0">
         <u-row>

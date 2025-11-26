@@ -34,7 +34,7 @@ const emit = defineEmits(['close'])
 const shortcutList = [
     { keys: ['Ctrl', '`'], action: 'Fokus ke Cari Barang' },
     { keys: ['Ctrl', '1'], action: 'Fokus ke Cari Pelanggan' },
-    { keys: ['Ctrl', '2'], action: 'Fokus ke Cari Dokter' },
+    // { keys: ['Ctrl', '2'], action: 'Fokus ke Cari Dokter' },
     { keys: ['F2'], action: 'Fokus ke Input Pembayaran' },
     { keys: ['Ctrl', 'Space'], action: 'Ganti Metode Pembayaran (Tunai / Transfer)' },
     { keys: ['F1'], action: 'Reload Halaman Kasir' },

@@ -47,7 +47,6 @@
               <tr class="text-left text-bold">
                 <th class="th">#</th>
                 <th class="th p-1">Nama Barang</th>
-                <th class="th p-1">Nobatch</th>
                 <th class="th p-1">Jumlah Barang</th>
                 <th class="th text-right p-1">Harga Barang (Rp)</th>
                 <th class="th text-right p-1">Disc</th>
@@ -58,7 +57,6 @@
               <tr v-for="(item, index) in groupedItems" :key="index">
                 <td class="td text-gray-500">{{ index + 1 }}</td>
                 <td class="td p-1 text-left">{{ item?.nama || '-' }}</td>
-                <td class="td p-1 text-left">{{ item?.nobatch || '-' }}</td>
                 <td class="td p-1 text-left">{{ item?.jumlah_b }} {{ item?.satuan_b }}</td>
                 <td class="td p-1 text-right">{{ formatRupiah(item?.harga_b) }}</td>
                 <td class="td p-1 text-right">
