@@ -190,7 +190,7 @@ console.log('data', data.value);
 
 const printObj = {
   id: '#printArea', // ref elemen yang mau diprint
-  popTitle: 'Retur PBF',
+  popTitle: 'Pembayaran Hutang',
   preview: false,
   extraCss: '',
   extraHead: '',

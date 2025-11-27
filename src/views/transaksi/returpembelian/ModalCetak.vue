@@ -21,7 +21,7 @@
           </div>
           <div class="text-right">
             <div class="inline-block px-3 py-1 rounded-full border text-xs uppercase tracking-wider">
-              Retur PBF
+              Retur Pembelian
             </div>
             <div class="mt-3 grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
               <div class="text-gray-500">No. Retur</div>
@@ -189,7 +189,7 @@ console.log('data', data.value);
 
 const printObj = {
   id: '#printArea', // ref elemen yang mau diprint
-  popTitle: 'Retur PBF',
+  popTitle: 'Retur Pembelian',
   preview: false,
   extraCss: '',
   extraHead: '',

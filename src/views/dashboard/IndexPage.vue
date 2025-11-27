@@ -204,13 +204,13 @@ const stats = computed(() => {
 
           <u-card padding="p-0" class="col-span-1 md:col-span-6 w-full">
             <u-row class="px-4 pt-4">
-              <u-text size="md" class="font-light" color="text-gray-500">Top 5 PBF (Bulan Ini)</u-text>
+              <u-text size="md" class="font-light" color="text-gray-500">Top 5 Supplier (Bulan Ini)</u-text>
             </u-row>
 
             <div class="">
               <BaseChart type="bar" :labels="store?.topPbf?.label" :datasets="[
                   {
-                    label: 'Top 5 PBF',
+                    label: 'Top 5 Supplier',
                     data: store?.topPbf?.data,
                     backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'],
                   }

@@ -28,7 +28,7 @@
             </div>
             <div class="flex justify-between text-[11px]">
               <span>{{ it?.jumlah_k }} {{ it?.satuan_k }} x {{ formatRupiah(it?.harga_jual) }}</span>
-              <span>Disc: - {{ formatRupiah(it?.diskon) }}</span>
+              <span v-if="it?.diskon">Disc: - {{ formatRupiah(it?.diskon) }}</span>
             </div>
           </div>
         </div>

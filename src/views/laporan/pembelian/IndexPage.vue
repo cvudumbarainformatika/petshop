@@ -1,9 +1,9 @@
 <template>
   <base-laporan :title="title" :store="store" :showDateButton="true" :showAddButton="false" :onRange="handleRange"
     :onRefresh="handleRefresh">
-    <!-- <template #loading>
+    <template #loading>
       <LoaderItem />
-    </template> -->
+    </template>
     <template #item="{ item }">
       <Suspense>
         <template #default>
@@ -72,8 +72,8 @@ const handleRange = () => {
     to: store.range?.end_date,
   }
   store.fetchAll(params)
-  console.log('handleRange', params);
-  console.log('items', store.items);
+  // console.log('handleRange', params);
+  // console.log('items', store.items);
 }
 function handleRefresh() {
   // console.log('Refresh List')

@@ -66,7 +66,7 @@
         <u-card class="col-span-8 h-full space-y-4">
           <u-row>
             <u-icon name="baggage-claim" class="w-4 h-4" />
-            <u-text class="font-bold">Informasi Item Retur PBF</u-text>
+            <u-text class="font-bold">Informasi Item Retur Pembelian</u-text>
           </u-row>
           <u-row>
             <u-autocomplete v-model="searchPenerimaan" placeholder="Cari No Transaksi Penerimaan" 
@@ -98,7 +98,7 @@
               class="bg-background border-1 border-primary rounded-xl shadow-sm p-4 transition-all duration-300 hover:shadow-md w-full absolute z-10 -top-4">
               <u-grid cols="12" gap="gap-4">
                 <div class="col-span-4">
-                  <u-text class="font-bold">Nama Supplier (PBF)</u-text>
+                  <u-text class="font-bold">Nama Supplier</u-text>
                   <u-text>{{ store.penerimaanSelected?.suplier?.nama || '-' }}</u-text>
                 </div>
                 <div class="col-span-4 text-center">
@@ -179,7 +179,7 @@
           <u-card class="w-full space-y-4">
             <u-row>
               <u-icon name="layers" class="w-4 h-4" />
-              <u-text class="font-bold">Informasi Retur PBF</u-text>
+              <u-text class="font-bold">Informasi Retur Pembelian</u-text>
             </u-row>
             <u-row >
               <u-input-date type="date" v-model="form.tglretur" :error="errorMessage('tglretur')"  />

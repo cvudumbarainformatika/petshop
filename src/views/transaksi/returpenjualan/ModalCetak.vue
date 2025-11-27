@@ -186,7 +186,7 @@ const totals = computed(() => {
 
 const printObj = {
   id: '#printArea', // ref elemen yang mau diprint
-  popTitle: 'Retur PBF',
+  popTitle: 'Retur Penjualan',
   preview: false,
   extraCss: '',
   extraHead: '',
