@@ -12,16 +12,14 @@
         <u-row flex1 class="w-full">
           <u-row>
             <u-select label="Satuan Kecil" v-model="form.satuan_k" :options="optionSatuans" :error="isError('satuan_k')"
-              :error-message="errorMessage('satuan_k')" @update:modelValue="(val) => {
+              :error-message="errorMessage('satuan_k')" @inputval="cariSatuan" @update:modelValue="(val) => {
                 console.log('val', val);
-
               }" />
           </u-row>
           <u-row>
             <u-select label="Satuan Besar" v-model="form.satuan_b" :options="optionSatuans" :error="isError('satuan_b')"
-              :error-message="errorMessage('satuan_b')" @update:modelValue="(val) => {
+              :error-message="errorMessage('satuan_b')" @inputval="cariSatuan" @update:modelValue="(val) => {
                 console.log('val', val);
-
               }" />
           </u-row>
           <u-row class="w-36">
@@ -32,9 +30,13 @@
         <u-row flex1 class="w-full">
           <!-- <u-row> -->
             <u-select label="Kategori" v-model="form.kategori" :options="optionKategori" :error="isError('kategori')"
-              :error-message="errorMessage('kategori')" @update:modelValue="(val) => {
+              :error-message="errorMessage('kategori')" @inputval="cariKategori" @update:modelValue="(val) => {
                 console.log('val', val);
-
+                if (!val) {
+                  masterKategori.q = null
+                  valKategori = null
+                  masterKategori.fetchAll()
+                }
               }" />
           <!-- </u-row> -->
           <!-- <u-row>
@@ -46,9 +48,13 @@
           </u-row> -->
           <!-- <u-row> -->
             <u-select label="Merk" v-model="form.merk" :options="optionMerk" :error="isError('merk')"
-              :error-message="errorMessage('merk')" @update:modelValue="(val) => {
+              :error-message="errorMessage('merk')" @inputval="cariMerk" @update:modelValue="(val) => {
                 console.log('val', val);
-
+                if (!val) {
+                  masterMerk.q = null
+                  valMerk = null
+                  masterMerk.fetchAll()
+                }
               }" />
           <!-- </u-row> -->
         </u-row>
@@ -200,20 +206,65 @@ function init() {
 
 import { useKategoriStore, useMerkStore, useRakStore, useSatuanStore } from '@/stores/template/register'
 const masterSatuan = useSatuanStore()
-const optionSatuans = computed(() => masterSatuan?.items?.map(item => ({ label: item?.nama, value: item?.nama })) || [])
+// const optionSatuans = computed(() => masterSatuan?.items?.map(item => ({ label: item?.nama, value: item?.nama })) || [])
+const valSatuan = ref(null)
+const optionSatuans = ref([])
+function cariSatuan(val) {
+  valSatuan.value = val
+  const match = masterSatuan?.items.filter(o => o.nama?.toLowerCase()?.includes(valSatuan.value))
+  if (match.length > 0) optionSatuans.value = match?.map(item => ({ label: item?.nama, value: item?.nama }))
+  else {
+    masterSatuan.q = val
+    masterSatuan.fetchAll()
+  }
+}
+watch(() => masterSatuan?.items, () => {
+  const match = !!valSatuan.value ? masterSatuan?.items.filter(o => o.nama?.toLowerCase()?.includes(valSatuan.value)) : masterSatuan?.items
+  if (match.length > 0) optionSatuans.value = match?.map(item => ({ label: item?.nama, value: item?.nama }))
+}, { immediate: true })
+
+
+
 
 
 const masterMerk = useMerkStore()
-const optionMerk = computed(() => masterMerk?.items?.map(item => ({ label: item?.nama, value: item?.nama })) || [])
+const valMerk = ref(null)
+const optionMerk = ref([])
+function cariMerk(val) {
+  valMerk.value = val
+  const match = masterMerk?.items.filter(o => o.nama?.toLowerCase()?.includes(valMerk.value))
+  if (match.length > 0) optionMerk.value = match?.map(item => ({ label: item?.nama, value: item?.nama }))
+  else {
+    masterMerk.q = val
+    masterMerk.fetchAll()
+  }
+}
+watch(() => masterMerk?.items, () => {
+  const match = !!valMerk.value ? masterMerk?.items.filter(o => o.nama?.toLowerCase()?.includes(valMerk.value)) : masterMerk?.items
+  if (match.length > 0) optionMerk.value = match?.map(item => ({ label: item?.nama, value: item?.nama }))
+}, { immediate: true })
 
 const masterKategori = useKategoriStore()
-const optionKategori = computed(() => masterKategori?.items?.map(item => ({ label: item?.nama, value: item?.nama })) || [])
+// const optionKategori = computed(() => masterKategori?.items?.map(item => ({ label: item?.nama, value: item?.nama })) || [])
+const valKategori = ref(null)
+const optionKategori = ref([])
+function cariKategori(val) {
+  valKategori.value = val
+  const match = masterKategori?.items.filter(o => o.nama?.toLowerCase()?.includes(valKategori.value))
+  if (match.length > 0) optionKategori.value = match?.map(item => ({ label: item?.nama, value: item?.nama }))
+  else {
+    masterKategori.q = val
+    masterKategori.fetchAll()
+  }
+}
+watch(() => masterKategori?.items, () => {
+  const match = !!valKategori.value ? masterKategori?.items.filter(o => o.nama?.toLowerCase()?.includes(valKategori.value)) : masterKategori?.items
+  if (match.length > 0) optionKategori.value = match?.map(item => ({ label: item?.nama, value: item?.nama }))
+}, { immediate: true })
 
 const masterRak = useRakStore()
 const optionRak = computed(() => masterRak?.items?.map(item => ({ label: item?.nama, value: item?.nama })) || [])
 onMounted(() => {
-  console.log('Mounted Form', masterSatuan.items);
-  console.log('masterMerk', masterMerk.items);
   init()
 
   // ini tambahan

@@ -5,7 +5,7 @@
     <input
       v-model="query"
       @focus="handleFocus"
-      @input="open = true"
+      @input="inputTrue"
       @keydown="onKeyDown"
       :placeholder="placeholder"
       class="peer w-full px-4 py-2 pr-10 focus:bg-background border rounded-full focus:outline-none focus:ring-1 transition"
@@ -115,6 +115,12 @@ function splitLabel(label) {
   }))
 }
 
+let cari = ''
+function inputTrue(val){
+  open.value = true
+  emit('inputval', val?.target?.value)
+  cari = val?.target?.value
+}
 function select(opt, idx) {
   query.value = opt.label
   emit('update:modelValue', opt.value)
@@ -168,6 +174,7 @@ function handleClickOutside(e) {
 
 function handleFocus() {
   open.value = true
+  
   const i = props.options.findIndex(o => o.value === props.modelValue)
   activeIndex.value = i >= 0 ? i : -1
   updateDropdownPosition()
